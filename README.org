@@ -5,4 +5,41 @@
  - https://www.windowsafg.com/win10x86_x64_uefi.html
 ** Änderungen
  - Deutsche Spracheinstellungen
- 
+
+* ISO anpassen
+** Debian Linux
+- Windows ISO mounten 
+#+begin_src 
+mount -o RO loop Win11_22H2_German_x64v1.iso /media/iso
+#+end_src
+
+- Daten in Zielverzeichnis kopieren
+#+begin_src 
+mkdir Win11_22H2
+cp -R /media/iso/ Win11_22H2
+#+end_src
+
+- Autounattend.xml Datein einfügen
+#+begin_src 
+cp Win11_Pro_e2b.xml Win11_22H2/autounattend.xml
+#+end_src
+
+- ISO erstellen
+  - https://unix.stackexchange.com/a/667390
+    #+begin_src 
+    genisoimage \
+      --allow-limited-size \
+      -no-emul-boot \
+      -b "boot/etfsboot.com" \
+      -boot-load-seg 0 \
+      -boot-load-size 8 \
+      -eltorito-alt-boot \
+      -no-emul-boot \
+      -b "efi/microsoft/boot/efisys.bin" \
+      -boot-load-size 1 \
+      -iso-level 4 \
+      -udf \
+      -o "Win11_22H2_e2b_v2.iso" \
+      "Win11_22H2/"
+    #+end_src
+- Test in VirtualBox u.ä.
