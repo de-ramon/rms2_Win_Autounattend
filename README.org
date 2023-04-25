@@ -1,0 +1,8 @@
+# rms2_Win_Autounattend
+
+* Unattended Files
+** Quelle
+ - https://www.windowsafg.com/win10x86_x64_uefi.html
+** Änderungen
+ - Deutsche Spracheinstellungen
+ 
