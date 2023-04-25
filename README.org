@@ -1,13 +1,13 @@
 # rms2_Win_Autounattend
 
 * Unattended Files
-** Quelle
- - https://www.windowsafg.com/win10x86_x64_uefi.html
-** Änderungen
- - Deutsche Spracheinstellungen
+- Quelle
+  - https://www.windowsafg.com/win10x86_x64_uefi.html
+- Änderungen
+  - Deutsche Spracheinstellungen
 
 * ISO anpassen
-** Debian Linux
+** Mittels Debian Linux
 - Windows ISO mounten 
 #+begin_src 
 mount -o RO loop Win11_22H2_German_x64v1.iso /media/iso
@@ -23,6 +23,41 @@ cp -R /media/iso/ Win11_22H2
 #+begin_src 
 cp Win11_Pro_e2b.xml Win11_22H2/autounattend.xml
 #+end_src
+
+- Zusätzliche Informationen mit auf der neuen ISO ablegen
+  Um die Quelle der neu erstellten ISO eindeutig bestimmen zu können, bietet es sich an eine Datei README.TXT mit folgenden Informationen zu erstellen:
+  
+  #+begin_src 
+  Source-File:
+
+  - SHA256-Hash-Wert
+  2ad545b9091e67babb25ddba5eacfed2018b388557d82a1f2002597dc559661b *Win11_22H2_German_x64v1.iso
+
+  - File-Sytem-Info
+  disktype org/Win11_22H2_German_x64v1.iso 
+
+  --- org/Win11_22H2_German_x64v1.iso
+  Regular file, size 5.175 GiB (5556342784 bytes)
+  UDF file system
+    Sector size 2048 bytes
+    Volume name "<5500><4400><4600><2000><5600><6F00><6C00><7500><6D00><6500>"
+    UDF version 1.02
+  ISO9660 file system
+    Volume name "CCCOMA_X64FRE_DE-DE_DV9"
+    Publisher   "MICROSOFT CORPORATION"
+    Preparer    "MICROSOFT CORPORATION, ONE MICROSOFT WAY, REDMOND WA 98052, (425) 882-8080"
+    Application "CDIMAGE 2.56 (01/01/2005 TM)"
+    Data size 5.175 GiB (5556342784 bytes, 2713058 blocks of 2 KiB)
+    El Torito boot record, catalog at 22
+      Bootable non-emulated image, starts at 515, preloads 4 KiB
+        Platform 0x00 (x86), System Type 0x00 (Empty)
+      Bootable non-emulated image, starts at 517, preloads 512 bytes
+        Platform 0xEF (EFI), System Type 0x00 (Empty)
+        Windows / MS-DOS boot loader
+        FAT12 file system (hints score 5 of 5)
+          Volume size 1.390 MiB (1457664 bytes, 2847 clusters of 512 bytes)
+          Volume name "EFISECTOR"
+    #+end_src
 
 - ISO erstellen
   - https://unix.stackexchange.com/a/667390
